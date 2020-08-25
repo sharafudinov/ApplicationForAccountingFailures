@@ -1,0 +1,28 @@
+﻿<Window x:Class="WpfApp3.FolderForWindows.RequestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3.FolderForWindows"
+        mc:Ignorable="d"
+          Title="RequestWindow" Height="528.689" Width="1093.852" Style="{StaticResource WindowST}">
+    <Grid>
+        <DataGrid Style="{StaticResource GridStyle}" x:Name="GridTable" HorizontalAlignment="Left" Height="369" Margin="10,10,0,0" VerticalAlignment="Top" Width="927" AutoGenerateColumns="False" SelectionChanged="GridTable_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding OrganizationEmployee.LastName}" Header="Фамилия"/>
+                <DataGridTextColumn Binding="{Binding OrganizationEmployee.FirstName}" Header="Имя" />
+                <DataGridTextColumn Binding="{Binding OrganizationEmployee.MiddleName}" Header="Отчество" />
+                <DataGridTextColumn Binding="{Binding OrganizationEmployee.Position.NameOfPosition}" Header="Должность" />
+                <DataGridTextColumn Binding="{Binding EquipmentCard.NameOfEquipment}" Header="Оборудование"/>
+                <DataGridTextColumn Binding="{Binding EquipmentCard.InventoryNumber}" Header="Инвент номер"/>
+                <DataGridTextColumn Binding="{Binding EquipmentCard.CommissioningDate}" Header="Ввод в эксплуатацию"/>
+                <DataGridTextColumn Binding="{Binding EquipmentCard.Lifetime}" Header="Срок использования"/>
+                <DataGridTextColumn Binding="{Binding StatusOfApplicationAcceptance.NameOfStatus}" Header="Статус заявки"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <GroupBox Header="Команды" HorizontalAlignment="Left" Height="149" Margin="942,10,0,0" VerticalAlignment="Top" Width="140"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Одобрить" HorizontalAlignment="Left" Margin="952,32,0,0" VerticalAlignment="Top" Width="124" Click="Button_Click"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Отклонить" HorizontalAlignment="Left" Margin="952,57,0,0" VerticalAlignment="Top" Width="124" Click="Button_Click_1"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Назад" HorizontalAlignment="Left" Margin="952,82,0,0" VerticalAlignment="Top" Width="124" Height="24" Click="Button_Click_2"/>
+    </Grid>
+</Window>

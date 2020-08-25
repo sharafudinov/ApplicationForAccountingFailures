@@ -1,0 +1,28 @@
+﻿<Window x:Class="WpfApp3.FolderForWindows.WorkWithRepair"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3.FolderForWindows"
+        mc:Ignorable="d"
+         Title="WorkWithRepair" Height="528.688" Width="1154.098"  Style="{StaticResource WindowST}">
+    <Grid>
+        <DataGrid Style="{StaticResource GridStyle}"  x:Name="DataGridRepair" HorizontalAlignment="Left" Height="478" Margin="10,10,0,0" VerticalAlignment="Top" Width="978" AutoGenerateColumns="False" SelectionChanged="DataGridRepair_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ApplicationAcceptance.EquipmentCard.NameOfEquipment}" Header="Наименование оборудования"/>
+                <DataGridTextColumn Binding="{Binding ApplicationAcceptance.EquipmentCard.InventoryNumber}" Header="Инвентаризациооный номер" />
+                <DataGridTextColumn Binding="{Binding EquipmentBreakdown.NameOfBreakdown}" Header="Поломка" />
+                <DataGridTextColumn Binding="{Binding NumberOfRepair}" Header="Номер в ремонте" />
+                <DataGridTextColumn Binding="{Binding StatusOfRepair.StatusOfRepair1}" Header="Статус ремонта" />
+                <DataGridTextColumn Binding="{Binding ApplicationAcceptance.DateOfAdoption}" Header="Дата выдачи в ремонт" />
+                <DataGridTextColumn Binding="{Binding ApplicationAcceptance.FinishDateRepair}" Header="Дата окончания ремонта" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Информация о ремонте" x:Name="Btn_ifoOfRepair" HorizontalAlignment="Left" Margin="993,29,0,0" VerticalAlignment="Top" Width="143" Click="Btn_ifoOfRepair_Click"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Продление ремонта" x:Name="Btn_ProRepair" HorizontalAlignment="Left" Margin="993,54,0,0" VerticalAlignment="Top" Width="143" Click="Btn_ProRepair_Click"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Снятие с ремонта" x:Name="Btn_OutOfRepair" HorizontalAlignment="Left" Margin="993,79,0,0" VerticalAlignment="Top" Width="143" Click="Btn_OutOfRepair_Click"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="На главную" HorizontalAlignment="Left" Margin="993,104,0,0" VerticalAlignment="Top" Width="143" Click="Button_Click"/>
+        <GroupBox Header="Меню" HorizontalAlignment="Left" Height="135" Margin="988,10,0,0" VerticalAlignment="Top" Width="153"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,28 @@
+﻿<Window x:Class="WpfApp3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+       Title="MainWindow" Height="533.607" Width="1080.328" Style="{StaticResource WindowST}">
+    <Grid>
+        <DataGrid   Style="{StaticResource GridStyle}" x:Name="GridTable" HorizontalAlignment="Left" Height="438" Margin="10,10,0,0" VerticalAlignment="Top" Width="918" AutoGenerateColumns="False" SelectionChanged="GridTable_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ApplicationAcceptance.EquipmentCard.NameOfEquipment}" Header="Наименование оборудования"/>
+                <DataGridTextColumn Binding="{Binding ApplicationAcceptance.EquipmentCard.InventoryNumber}" Header="Инвентаризациооный номер" />
+                <DataGridTextColumn Binding="{Binding EquipmentBreakdown.NameOfBreakdown}" Header="Поломка" />
+                <DataGridTextColumn Binding="{Binding NumberOfRepair}" Header="Номер в ремонте" />
+                <DataGridTextColumn Binding="{Binding StatusOfRepair.StatusOfRepair1}" Header="Статус ремонта" />
+                <DataGridTextColumn Binding="{Binding ApplicationAcceptance.DateOfAdoption}" Header="Дата выдачи в ремонт" />
+                <DataGridTextColumn Binding="{Binding ApplicationAcceptance.FinishDateRepair}" Header="Дата окончания ремонта" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <GroupBox Header="Вкладки" HorizontalAlignment="Left" Height="94" Margin="933,14,0,0" VerticalAlignment="Top" Width="129"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Ремонт" x:Name="RepBtn" HorizontalAlignment="Left" Margin="933,63,0,0" VerticalAlignment="Top" Width="129" Click="Button_Click"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Сотрудники" x:Name="AdmBtn" HorizontalAlignment="Left" Margin="933,88,0,0" VerticalAlignment="Top" Width="129" Click="AdmBtn_Click"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Оборудование" HorizontalAlignment="Left" Margin="933,38,0,0" VerticalAlignment="Top" Width="129" Click="Button_Click_1"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Закрыть программу" HorizontalAlignment="Left" Margin="933,113,0,0" VerticalAlignment="Top" Width="129" Click="Button_Click_2"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Заявки на ремонт" HorizontalAlignment="Left" Margin="933,138,0,0" VerticalAlignment="Top" Width="129" Click="Button_Click_3"/>
+    </Grid>
+</Window>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c2473cc6ce1b41f4bbed1504e1c22562" Name="Diagram1">
+        <EntityTypeShape EntityType="shiaDBModel.ApplicationAcceptance" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.EquipmentBreakdown" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.EquipmentCard" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.History" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.OrganizationEmployee" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.Position" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.Products" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.Repair" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.StatusOfApplicationAcceptance" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.StatusOfEquipment" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.StatusOfOrganiztionEmployee" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.StatusOfRepair" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="shiaDBModel.TypeOfEquipment" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="shiaDBModel.FK__Applicati__idEqu__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="shiaDBModel.FK__Applicati__Respo__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="shiaDBModel.FK__Repair__idReques__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="shiaDBModel.FK_ApplicationAcceptance_StatusOfApplicationAcceptance" ManuallyRouted="false" />
+        <AssociationConnector Association="shiaDBModel.FK_Repair_EquipmentBreakdown" ManuallyRouted="false" />
+        <AssociationConnector Association="shiaDBModel.FK__Equipment__idSta__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="shiaDBModel.FK__Equipment__idTyp__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="shiaDBModel.FK_OrganizationEmployee_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="shiaDBModel.FK_OrganizationEmployee_StatusOfOrganiztionEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="shiaDBModel.FK_Repair_StatusOfRepair" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

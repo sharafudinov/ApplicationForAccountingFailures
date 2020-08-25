@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfApp3.FolderForWindows.AddNewEquip"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3.FolderForWindows"
+        mc:Ignorable="d"
+        Title="" Height="274.077" Width="154.093" Style="{StaticResource WindowST}">
+    <Grid>
+        <TextBox Style="{StaticResource TextBoxWithValidation}" x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="10,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Style="{StaticResource TextBoxWithValidation}" x:Name="Mou" HorizontalAlignment="Left" Height="23" Margin="10,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Style="{StaticResource ComboBoxFlatStyle}"  x:Name="Cmb" HorizontalAlignment="Left" Margin="10,163,0,0" VerticalAlignment="Top" Width="120"
+                  ItemsSource="{Binding ItemsForRoles}" DisplayMemberPath="TypeOfEquipment1"
+                  SelectedValue="{Binding Path=idTypeOfEquipment}"
+                  >
+        </ComboBox>
+        <Label Content="Наименование" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top"/>
+        <Label Content="Срок службы" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top"/>
+        <Label Content="Тип оборудования" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Добавить" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click_1"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Отмена" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
+
+    </Grid>
+</Window>

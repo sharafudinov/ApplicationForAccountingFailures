@@ -1,0 +1,812 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище shiaDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplicationAcceptance">
+          <Key>
+            <PropertyRef Name="idRequest" />
+          </Key>
+          <Property Name="idRequest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ResponsiblePerson" Type="int" Nullable="false" />
+          <Property Name="idEquipment" Type="int" Nullable="false" />
+          <Property Name="DateOfAdoption" Type="datetime" Nullable="false" />
+          <Property Name="FinishDateRepair" Type="datetime" Nullable="false" />
+          <Property Name="FK_StatusOfApplicationAcceptance_id" Type="int" />
+        </EntityType>
+        <EntityType Name="EquipmentBreakdown">
+          <Key>
+            <PropertyRef Name="idBreakdown" />
+          </Key>
+          <Property Name="idBreakdown" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameOfBreakdown" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EquipmentCard">
+          <Key>
+            <PropertyRef Name="IdEquipment" />
+          </Key>
+          <Property Name="IdEquipment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameOfEquipment" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lifetime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InventoryNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CommissioningDate" Type="datetime" Nullable="false" />
+          <Property Name="DecommissioningDate" Type="datetime" Nullable="false" />
+          <Property Name="idTypeOfEquipment" Type="int" Nullable="false" />
+          <Property Name="idStatusOfEquipment" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Operation" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreateAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizationEmployee">
+          <Key>
+            <PropertyRef Name="idEmployee" />
+          </Key>
+          <Property Name="idEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPosition" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FK_StatusOfOrganiztionEmployee_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="idPosition" />
+          </Key>
+          <Property Name="idPosition" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameOfPosition" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LevelOfAccess" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ProductCount" Type="int" />
+          <Property Name="Price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Repair">
+          <Key>
+            <PropertyRef Name="idRepair" />
+          </Key>
+          <Property Name="idRepair" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idBreakdown" Type="int" Nullable="false" />
+          <Property Name="idRequest" Type="int" Nullable="false" />
+          <Property Name="NumberOfRepair" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idStatusOfRepair" Type="int" Nullable="false" />
+          <Property Name="RenewalOfRepair" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusOfApplicationAcceptance">
+          <Key>
+            <PropertyRef Name="idSOAA" />
+          </Key>
+          <Property Name="idSOAA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameOfStatus" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusOfEquipment">
+          <Key>
+            <PropertyRef Name="idStatusOfEquipment" />
+          </Key>
+          <Property Name="idStatusOfEquipment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusOfEquipment" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusOfOrganiztionEmployee">
+          <Key>
+            <PropertyRef Name="idStatOfOE" />
+          </Key>
+          <Property Name="idStatOfOE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameOfStatOfOE" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusOfRepair">
+          <Key>
+            <PropertyRef Name="idStatusOfRepair" />
+          </Key>
+          <Property Name="idStatusOfRepair" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusOfRepair" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypeOfEquipment">
+          <Key>
+            <PropertyRef Name="idTypeOfEquipment" />
+          </Key>
+          <Property Name="idTypeOfEquipment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeOfEquipment" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Applicati__idEqu__4CA06362">
+          <End Role="EquipmentCard" Type="Self.EquipmentCard" Multiplicity="1" />
+          <End Role="ApplicationAcceptance" Type="Self.ApplicationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentCard">
+              <PropertyRef Name="IdEquipment" />
+            </Principal>
+            <Dependent Role="ApplicationAcceptance">
+              <PropertyRef Name="idEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Applicati__Respo__4BAC3F29">
+          <End Role="OrganizationEmployee" Type="Self.OrganizationEmployee" Multiplicity="1" />
+          <End Role="ApplicationAcceptance" Type="Self.ApplicationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrganizationEmployee">
+              <PropertyRef Name="idEmployee" />
+            </Principal>
+            <Dependent Role="ApplicationAcceptance">
+              <PropertyRef Name="ResponsiblePerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__idSta__44FF419A">
+          <End Role="StatusOfEquipment" Type="Self.StatusOfEquipment" Multiplicity="1" />
+          <End Role="EquipmentCard" Type="Self.EquipmentCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOfEquipment">
+              <PropertyRef Name="idStatusOfEquipment" />
+            </Principal>
+            <Dependent Role="EquipmentCard">
+              <PropertyRef Name="idStatusOfEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__idTyp__440B1D61">
+          <End Role="TypeOfEquipment" Type="Self.TypeOfEquipment" Multiplicity="1" />
+          <End Role="EquipmentCard" Type="Self.EquipmentCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfEquipment">
+              <PropertyRef Name="idTypeOfEquipment" />
+            </Principal>
+            <Dependent Role="EquipmentCard">
+              <PropertyRef Name="idTypeOfEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repair__idReques__5165187F">
+          <End Role="ApplicationAcceptance" Type="Self.ApplicationAcceptance" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationAcceptance">
+              <PropertyRef Name="idRequest" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="idRequest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationAcceptance_StatusOfApplicationAcceptance">
+          <End Role="StatusOfApplicationAcceptance" Type="Self.StatusOfApplicationAcceptance" Multiplicity="0..1" />
+          <End Role="ApplicationAcceptance" Type="Self.ApplicationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOfApplicationAcceptance">
+              <PropertyRef Name="idSOAA" />
+            </Principal>
+            <Dependent Role="ApplicationAcceptance">
+              <PropertyRef Name="FK_StatusOfApplicationAcceptance_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrganizationEmployee_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="OrganizationEmployee" Type="Self.OrganizationEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="idPosition" />
+            </Principal>
+            <Dependent Role="OrganizationEmployee">
+              <PropertyRef Name="idPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrganizationEmployee_StatusOfOrganiztionEmployee">
+          <End Role="StatusOfOrganiztionEmployee" Type="Self.StatusOfOrganiztionEmployee" Multiplicity="0..1" />
+          <End Role="OrganizationEmployee" Type="Self.OrganizationEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOfOrganiztionEmployee">
+              <PropertyRef Name="idStatOfOE" />
+            </Principal>
+            <Dependent Role="OrganizationEmployee">
+              <PropertyRef Name="FK_StatusOfOrganiztionEmployee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repair_EquipmentBreakdown">
+          <End Role="EquipmentBreakdown" Type="Self.EquipmentBreakdown" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentBreakdown">
+              <PropertyRef Name="idBreakdown" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="idBreakdown" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repair_StatusOfRepair">
+          <End Role="StatusOfRepair" Type="Self.StatusOfRepair" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOfRepair">
+              <PropertyRef Name="idStatusOfRepair" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="idStatusOfRepair" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище shiaDBModelContainer">
+          <EntitySet Name="ApplicationAcceptance" EntityType="Self.ApplicationAcceptance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentBreakdown" EntityType="Self.EquipmentBreakdown" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentCard" EntityType="Self.EquipmentCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrganizationEmployee" EntityType="Self.OrganizationEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Repair" EntityType="Self.Repair" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusOfApplicationAcceptance" EntityType="Self.StatusOfApplicationAcceptance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusOfEquipment" EntityType="Self.StatusOfEquipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusOfOrganiztionEmployee" EntityType="Self.StatusOfOrganiztionEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusOfRepair" EntityType="Self.StatusOfRepair" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfEquipment" EntityType="Self.TypeOfEquipment" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Applicati__idEqu__4CA06362" Association="Self.FK__Applicati__idEqu__4CA06362">
+            <End Role="EquipmentCard" EntitySet="EquipmentCard" />
+            <End Role="ApplicationAcceptance" EntitySet="ApplicationAcceptance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Applicati__Respo__4BAC3F29" Association="Self.FK__Applicati__Respo__4BAC3F29">
+            <End Role="OrganizationEmployee" EntitySet="OrganizationEmployee" />
+            <End Role="ApplicationAcceptance" EntitySet="ApplicationAcceptance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__idSta__44FF419A" Association="Self.FK__Equipment__idSta__44FF419A">
+            <End Role="StatusOfEquipment" EntitySet="StatusOfEquipment" />
+            <End Role="EquipmentCard" EntitySet="EquipmentCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__idTyp__440B1D61" Association="Self.FK__Equipment__idTyp__440B1D61">
+            <End Role="TypeOfEquipment" EntitySet="TypeOfEquipment" />
+            <End Role="EquipmentCard" EntitySet="EquipmentCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repair__idReques__5165187F" Association="Self.FK__Repair__idReques__5165187F">
+            <End Role="ApplicationAcceptance" EntitySet="ApplicationAcceptance" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationAcceptance_StatusOfApplicationAcceptance" Association="Self.FK_ApplicationAcceptance_StatusOfApplicationAcceptance">
+            <End Role="StatusOfApplicationAcceptance" EntitySet="StatusOfApplicationAcceptance" />
+            <End Role="ApplicationAcceptance" EntitySet="ApplicationAcceptance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrganizationEmployee_Position" Association="Self.FK_OrganizationEmployee_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="OrganizationEmployee" EntitySet="OrganizationEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrganizationEmployee_StatusOfOrganiztionEmployee" Association="Self.FK_OrganizationEmployee_StatusOfOrganiztionEmployee">
+            <End Role="StatusOfOrganiztionEmployee" EntitySet="StatusOfOrganiztionEmployee" />
+            <End Role="OrganizationEmployee" EntitySet="OrganizationEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repair_EquipmentBreakdown" Association="Self.FK_Repair_EquipmentBreakdown">
+            <End Role="EquipmentBreakdown" EntitySet="EquipmentBreakdown" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repair_StatusOfRepair" Association="Self.FK_Repair_StatusOfRepair">
+            <End Role="StatusOfRepair" EntitySet="StatusOfRepair" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="shiaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ApplicationAcceptance">
+          <Key>
+            <PropertyRef Name="idRequest" />
+          </Key>
+          <Property Name="idRequest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResponsiblePerson" Type="Int32" Nullable="false" />
+          <Property Name="idEquipment" Type="Int32" Nullable="false" />
+          <Property Name="DateOfAdoption" Type="DateTime" Nullable="false" />
+          <Property Name="FinishDateRepair" Type="DateTime" Nullable="false" />
+          <Property Name="FK_StatusOfApplicationAcceptance_id" Type="Int32" />
+          <NavigationProperty Name="EquipmentCard" Relationship="Self.FK__Applicati__idEqu__4CA06362" FromRole="ApplicationAcceptance" ToRole="EquipmentCard" />
+          <NavigationProperty Name="OrganizationEmployee" Relationship="Self.FK__Applicati__Respo__4BAC3F29" FromRole="ApplicationAcceptance" ToRole="OrganizationEmployee" />
+          <NavigationProperty Name="Repair" Relationship="Self.FK__Repair__idReques__5165187F" FromRole="ApplicationAcceptance" ToRole="Repair" />
+          <NavigationProperty Name="StatusOfApplicationAcceptance" Relationship="Self.FK_ApplicationAcceptance_StatusOfApplicationAcceptance" FromRole="ApplicationAcceptance" ToRole="StatusOfApplicationAcceptance" />
+        </EntityType>
+        <EntityType Name="EquipmentBreakdown">
+          <Key>
+            <PropertyRef Name="idBreakdown" />
+          </Key>
+          <Property Name="idBreakdown" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameOfBreakdown" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Repair" Relationship="Self.FK_Repair_EquipmentBreakdown" FromRole="EquipmentBreakdown" ToRole="Repair" />
+        </EntityType>
+        <EntityType Name="EquipmentCard">
+          <Key>
+            <PropertyRef Name="IdEquipment" />
+          </Key>
+          <Property Name="IdEquipment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameOfEquipment" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lifetime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InventoryNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommissioningDate" Type="DateTime" Nullable="false" />
+          <Property Name="DecommissioningDate" Type="DateTime" Nullable="false" />
+          <Property Name="idTypeOfEquipment" Type="Int32" Nullable="false" />
+          <Property Name="idStatusOfEquipment" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicationAcceptance" Relationship="Self.FK__Applicati__idEqu__4CA06362" FromRole="EquipmentCard" ToRole="ApplicationAcceptance" />
+          <NavigationProperty Name="StatusOfEquipment" Relationship="Self.FK__Equipment__idSta__44FF419A" FromRole="EquipmentCard" ToRole="StatusOfEquipment" />
+          <NavigationProperty Name="TypeOfEquipment" Relationship="Self.FK__Equipment__idTyp__440B1D61" FromRole="EquipmentCard" ToRole="TypeOfEquipment" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Operation" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateAt" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizationEmployee">
+          <Key>
+            <PropertyRef Name="idEmployee" />
+          </Key>
+          <Property Name="idEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPosition" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FK_StatusOfOrganiztionEmployee_id" Type="Int32" />
+          <NavigationProperty Name="ApplicationAcceptance" Relationship="Self.FK__Applicati__Respo__4BAC3F29" FromRole="OrganizationEmployee" ToRole="ApplicationAcceptance" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_OrganizationEmployee_Position" FromRole="OrganizationEmployee" ToRole="Position" />
+          <NavigationProperty Name="StatusOfOrganiztionEmployee" Relationship="Self.FK_OrganizationEmployee_StatusOfOrganiztionEmployee" FromRole="OrganizationEmployee" ToRole="StatusOfOrganiztionEmployee" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="idPosition" />
+          </Key>
+          <Property Name="idPosition" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameOfPosition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LevelOfAccess" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrganizationEmployee" Relationship="Self.FK_OrganizationEmployee_Position" FromRole="Position" ToRole="OrganizationEmployee" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Manufacturer" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductCount" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Repair">
+          <Key>
+            <PropertyRef Name="idRepair" />
+          </Key>
+          <Property Name="idRepair" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idBreakdown" Type="Int32" Nullable="false" />
+          <Property Name="idRequest" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfRepair" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idStatusOfRepair" Type="Int32" Nullable="false" />
+          <Property Name="RenewalOfRepair" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ApplicationAcceptance" Relationship="Self.FK__Repair__idReques__5165187F" FromRole="Repair" ToRole="ApplicationAcceptance" />
+          <NavigationProperty Name="EquipmentBreakdown" Relationship="Self.FK_Repair_EquipmentBreakdown" FromRole="Repair" ToRole="EquipmentBreakdown" />
+          <NavigationProperty Name="StatusOfRepair" Relationship="Self.FK_Repair_StatusOfRepair" FromRole="Repair" ToRole="StatusOfRepair" />
+        </EntityType>
+        <EntityType Name="StatusOfApplicationAcceptance">
+          <Key>
+            <PropertyRef Name="idSOAA" />
+          </Key>
+          <Property Name="idSOAA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameOfStatus" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ApplicationAcceptance" Relationship="Self.FK_ApplicationAcceptance_StatusOfApplicationAcceptance" FromRole="StatusOfApplicationAcceptance" ToRole="ApplicationAcceptance" />
+        </EntityType>
+        <EntityType Name="StatusOfEquipment">
+          <Key>
+            <PropertyRef Name="idStatusOfEquipment" />
+          </Key>
+          <Property Name="idStatusOfEquipment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusOfEquipment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EquipmentCard" Relationship="Self.FK__Equipment__idSta__44FF419A" FromRole="StatusOfEquipment" ToRole="EquipmentCard" />
+        </EntityType>
+        <EntityType Name="StatusOfOrganiztionEmployee">
+          <Key>
+            <PropertyRef Name="idStatOfOE" />
+          </Key>
+          <Property Name="idStatOfOE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameOfStatOfOE" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OrganizationEmployee" Relationship="Self.FK_OrganizationEmployee_StatusOfOrganiztionEmployee" FromRole="StatusOfOrganiztionEmployee" ToRole="OrganizationEmployee" />
+        </EntityType>
+        <EntityType Name="StatusOfRepair">
+          <Key>
+            <PropertyRef Name="idStatusOfRepair" />
+          </Key>
+          <Property Name="idStatusOfRepair" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusOfRepair1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Repair" Relationship="Self.FK_Repair_StatusOfRepair" FromRole="StatusOfRepair" ToRole="Repair" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeOfEquipment">
+          <Key>
+            <PropertyRef Name="idTypeOfEquipment" />
+          </Key>
+          <Property Name="idTypeOfEquipment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeOfEquipment1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="EquipmentCard" Relationship="Self.FK__Equipment__idTyp__440B1D61" FromRole="TypeOfEquipment" ToRole="EquipmentCard" />
+        </EntityType>
+        <Association Name="FK__Applicati__idEqu__4CA06362">
+          <End Role="EquipmentCard" Type="Self.EquipmentCard" Multiplicity="1" />
+          <End Role="ApplicationAcceptance" Type="Self.ApplicationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentCard">
+              <PropertyRef Name="IdEquipment" />
+            </Principal>
+            <Dependent Role="ApplicationAcceptance">
+              <PropertyRef Name="idEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Applicati__Respo__4BAC3F29">
+          <End Role="OrganizationEmployee" Type="Self.OrganizationEmployee" Multiplicity="1" />
+          <End Role="ApplicationAcceptance" Type="Self.ApplicationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrganizationEmployee">
+              <PropertyRef Name="idEmployee" />
+            </Principal>
+            <Dependent Role="ApplicationAcceptance">
+              <PropertyRef Name="ResponsiblePerson" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Repair__idReques__5165187F">
+          <End Role="ApplicationAcceptance" Type="Self.ApplicationAcceptance" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicationAcceptance">
+              <PropertyRef Name="idRequest" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="idRequest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationAcceptance_StatusOfApplicationAcceptance">
+          <End Role="StatusOfApplicationAcceptance" Type="Self.StatusOfApplicationAcceptance" Multiplicity="0..1" />
+          <End Role="ApplicationAcceptance" Type="Self.ApplicationAcceptance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOfApplicationAcceptance">
+              <PropertyRef Name="idSOAA" />
+            </Principal>
+            <Dependent Role="ApplicationAcceptance">
+              <PropertyRef Name="FK_StatusOfApplicationAcceptance_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repair_EquipmentBreakdown">
+          <End Role="EquipmentBreakdown" Type="Self.EquipmentBreakdown" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EquipmentBreakdown">
+              <PropertyRef Name="idBreakdown" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="idBreakdown" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__idSta__44FF419A">
+          <End Role="StatusOfEquipment" Type="Self.StatusOfEquipment" Multiplicity="1" />
+          <End Role="EquipmentCard" Type="Self.EquipmentCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOfEquipment">
+              <PropertyRef Name="idStatusOfEquipment" />
+            </Principal>
+            <Dependent Role="EquipmentCard">
+              <PropertyRef Name="idStatusOfEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipment__idTyp__440B1D61">
+          <End Role="TypeOfEquipment" Type="Self.TypeOfEquipment" Multiplicity="1" />
+          <End Role="EquipmentCard" Type="Self.EquipmentCard" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfEquipment">
+              <PropertyRef Name="idTypeOfEquipment" />
+            </Principal>
+            <Dependent Role="EquipmentCard">
+              <PropertyRef Name="idTypeOfEquipment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrganizationEmployee_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="OrganizationEmployee" Type="Self.OrganizationEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="idPosition" />
+            </Principal>
+            <Dependent Role="OrganizationEmployee">
+              <PropertyRef Name="idPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrganizationEmployee_StatusOfOrganiztionEmployee">
+          <End Role="StatusOfOrganiztionEmployee" Type="Self.StatusOfOrganiztionEmployee" Multiplicity="0..1" />
+          <End Role="OrganizationEmployee" Type="Self.OrganizationEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOfOrganiztionEmployee">
+              <PropertyRef Name="idStatOfOE" />
+            </Principal>
+            <Dependent Role="OrganizationEmployee">
+              <PropertyRef Name="FK_StatusOfOrganiztionEmployee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Repair_StatusOfRepair">
+          <End Role="StatusOfRepair" Type="Self.StatusOfRepair" Multiplicity="1" />
+          <End Role="Repair" Type="Self.Repair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOfRepair">
+              <PropertyRef Name="idStatusOfRepair" />
+            </Principal>
+            <Dependent Role="Repair">
+              <PropertyRef Name="idStatusOfRepair" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="shiaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicationAcceptance" EntityType="Self.ApplicationAcceptance" />
+          <EntitySet Name="EquipmentBreakdown" EntityType="Self.EquipmentBreakdown" />
+          <EntitySet Name="EquipmentCard" EntityType="Self.EquipmentCard" />
+          <EntitySet Name="History" EntityType="Self.History" />
+          <EntitySet Name="OrganizationEmployee" EntityType="Self.OrganizationEmployee" />
+          <EntitySet Name="Position" EntityType="Self.Position" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="Repair" EntityType="Self.Repair" />
+          <EntitySet Name="StatusOfApplicationAcceptance" EntityType="Self.StatusOfApplicationAcceptance" />
+          <EntitySet Name="StatusOfEquipment" EntityType="Self.StatusOfEquipment" />
+          <EntitySet Name="StatusOfOrganiztionEmployee" EntityType="Self.StatusOfOrganiztionEmployee" />
+          <EntitySet Name="StatusOfRepair" EntityType="Self.StatusOfRepair" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TypeOfEquipment" EntityType="Self.TypeOfEquipment" />
+          <AssociationSet Name="FK__Applicati__idEqu__4CA06362" Association="Self.FK__Applicati__idEqu__4CA06362">
+            <End Role="EquipmentCard" EntitySet="EquipmentCard" />
+            <End Role="ApplicationAcceptance" EntitySet="ApplicationAcceptance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Applicati__Respo__4BAC3F29" Association="Self.FK__Applicati__Respo__4BAC3F29">
+            <End Role="OrganizationEmployee" EntitySet="OrganizationEmployee" />
+            <End Role="ApplicationAcceptance" EntitySet="ApplicationAcceptance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Repair__idReques__5165187F" Association="Self.FK__Repair__idReques__5165187F">
+            <End Role="ApplicationAcceptance" EntitySet="ApplicationAcceptance" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationAcceptance_StatusOfApplicationAcceptance" Association="Self.FK_ApplicationAcceptance_StatusOfApplicationAcceptance">
+            <End Role="StatusOfApplicationAcceptance" EntitySet="StatusOfApplicationAcceptance" />
+            <End Role="ApplicationAcceptance" EntitySet="ApplicationAcceptance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repair_EquipmentBreakdown" Association="Self.FK_Repair_EquipmentBreakdown">
+            <End Role="EquipmentBreakdown" EntitySet="EquipmentBreakdown" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__idSta__44FF419A" Association="Self.FK__Equipment__idSta__44FF419A">
+            <End Role="StatusOfEquipment" EntitySet="StatusOfEquipment" />
+            <End Role="EquipmentCard" EntitySet="EquipmentCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipment__idTyp__440B1D61" Association="Self.FK__Equipment__idTyp__440B1D61">
+            <End Role="TypeOfEquipment" EntitySet="TypeOfEquipment" />
+            <End Role="EquipmentCard" EntitySet="EquipmentCard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrganizationEmployee_Position" Association="Self.FK_OrganizationEmployee_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="OrganizationEmployee" EntitySet="OrganizationEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrganizationEmployee_StatusOfOrganiztionEmployee" Association="Self.FK_OrganizationEmployee_StatusOfOrganiztionEmployee">
+            <End Role="StatusOfOrganiztionEmployee" EntitySet="StatusOfOrganiztionEmployee" />
+            <End Role="OrganizationEmployee" EntitySet="OrganizationEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Repair_StatusOfRepair" Association="Self.FK_Repair_StatusOfRepair">
+            <End Role="StatusOfRepair" EntitySet="StatusOfRepair" />
+            <End Role="Repair" EntitySet="Repair" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище shiaDBModelContainer" CdmEntityContainer="shiaDBEntities">
+          <EntitySetMapping Name="ApplicationAcceptance">
+            <EntityTypeMapping TypeName="shiaDBModel.ApplicationAcceptance">
+              <MappingFragment StoreEntitySet="ApplicationAcceptance">
+                <ScalarProperty Name="idRequest" ColumnName="idRequest" />
+                <ScalarProperty Name="ResponsiblePerson" ColumnName="ResponsiblePerson" />
+                <ScalarProperty Name="idEquipment" ColumnName="idEquipment" />
+                <ScalarProperty Name="DateOfAdoption" ColumnName="DateOfAdoption" />
+                <ScalarProperty Name="FinishDateRepair" ColumnName="FinishDateRepair" />
+                <ScalarProperty Name="FK_StatusOfApplicationAcceptance_id" ColumnName="FK_StatusOfApplicationAcceptance_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentBreakdown">
+            <EntityTypeMapping TypeName="shiaDBModel.EquipmentBreakdown">
+              <MappingFragment StoreEntitySet="EquipmentBreakdown">
+                <ScalarProperty Name="idBreakdown" ColumnName="idBreakdown" />
+                <ScalarProperty Name="NameOfBreakdown" ColumnName="NameOfBreakdown" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentCard">
+            <EntityTypeMapping TypeName="shiaDBModel.EquipmentCard">
+              <MappingFragment StoreEntitySet="EquipmentCard">
+                <ScalarProperty Name="IdEquipment" ColumnName="IdEquipment" />
+                <ScalarProperty Name="NameOfEquipment" ColumnName="NameOfEquipment" />
+                <ScalarProperty Name="Lifetime" ColumnName="Lifetime" />
+                <ScalarProperty Name="InventoryNumber" ColumnName="InventoryNumber" />
+                <ScalarProperty Name="CommissioningDate" ColumnName="CommissioningDate" />
+                <ScalarProperty Name="DecommissioningDate" ColumnName="DecommissioningDate" />
+                <ScalarProperty Name="idTypeOfEquipment" ColumnName="idTypeOfEquipment" />
+                <ScalarProperty Name="idStatusOfEquipment" ColumnName="idStatusOfEquipment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="History">
+            <EntityTypeMapping TypeName="shiaDBModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="CreateAt" ColumnName="CreateAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrganizationEmployee">
+            <EntityTypeMapping TypeName="shiaDBModel.OrganizationEmployee">
+              <MappingFragment StoreEntitySet="OrganizationEmployee">
+                <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
+                <ScalarProperty Name="idPosition" ColumnName="idPosition" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FK_StatusOfOrganiztionEmployee_id" ColumnName="FK_StatusOfOrganiztionEmployee_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Position">
+            <EntityTypeMapping TypeName="shiaDBModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="idPosition" ColumnName="idPosition" />
+                <ScalarProperty Name="NameOfPosition" ColumnName="NameOfPosition" />
+                <ScalarProperty Name="LevelOfAccess" ColumnName="LevelOfAccess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="shiaDBModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="ProductCount" ColumnName="ProductCount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Repair">
+            <EntityTypeMapping TypeName="shiaDBModel.Repair">
+              <MappingFragment StoreEntitySet="Repair">
+                <ScalarProperty Name="idRepair" ColumnName="idRepair" />
+                <ScalarProperty Name="idBreakdown" ColumnName="idBreakdown" />
+                <ScalarProperty Name="idRequest" ColumnName="idRequest" />
+                <ScalarProperty Name="NumberOfRepair" ColumnName="NumberOfRepair" />
+                <ScalarProperty Name="idStatusOfRepair" ColumnName="idStatusOfRepair" />
+                <ScalarProperty Name="RenewalOfRepair" ColumnName="RenewalOfRepair" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusOfApplicationAcceptance">
+            <EntityTypeMapping TypeName="shiaDBModel.StatusOfApplicationAcceptance">
+              <MappingFragment StoreEntitySet="StatusOfApplicationAcceptance">
+                <ScalarProperty Name="idSOAA" ColumnName="idSOAA" />
+                <ScalarProperty Name="NameOfStatus" ColumnName="NameOfStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusOfEquipment">
+            <EntityTypeMapping TypeName="shiaDBModel.StatusOfEquipment">
+              <MappingFragment StoreEntitySet="StatusOfEquipment">
+                <ScalarProperty Name="idStatusOfEquipment" ColumnName="idStatusOfEquipment" />
+                <ScalarProperty Name="StatusOfEquipment1" ColumnName="StatusOfEquipment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusOfOrganiztionEmployee">
+            <EntityTypeMapping TypeName="shiaDBModel.StatusOfOrganiztionEmployee">
+              <MappingFragment StoreEntitySet="StatusOfOrganiztionEmployee">
+                <ScalarProperty Name="idStatOfOE" ColumnName="idStatOfOE" />
+                <ScalarProperty Name="NameOfStatOfOE" ColumnName="NameOfStatOfOE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusOfRepair">
+            <EntityTypeMapping TypeName="shiaDBModel.StatusOfRepair">
+              <MappingFragment StoreEntitySet="StatusOfRepair">
+                <ScalarProperty Name="idStatusOfRepair" ColumnName="idStatusOfRepair" />
+                <ScalarProperty Name="StatusOfRepair1" ColumnName="StatusOfRepair" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="shiaDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfEquipment">
+            <EntityTypeMapping TypeName="shiaDBModel.TypeOfEquipment">
+              <MappingFragment StoreEntitySet="TypeOfEquipment">
+                <ScalarProperty Name="idTypeOfEquipment" ColumnName="idTypeOfEquipment" />
+                <ScalarProperty Name="TypeOfEquipment1" ColumnName="TypeOfEquipment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

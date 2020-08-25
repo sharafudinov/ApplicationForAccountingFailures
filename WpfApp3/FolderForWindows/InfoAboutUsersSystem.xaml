@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApp3.FolderForWindows.InfoAboutUsersSystem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3.FolderForWindows"
+        mc:Ignorable="d"
+         Title="InfoAboutUsersSystem" Height="346.633" Width="719.449" Style="{StaticResource WindowST}">
+    <Grid>
+        <DataGrid Style="{StaticResource GridStyle}" x:Name="GridTable" HorizontalAlignment="Left" Height="308" Margin="10,10,0,0" VerticalAlignment="Top" Width="506" AutoGenerateColumns="False" SelectionChanged="GridTable_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Фамилия"/>
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="Имя" />
+                <DataGridTextColumn Binding="{Binding MiddleName}" Header="Отчество" />
+                <DataGridTextColumn Binding="{Binding PhoneNumber}" Header="Контактный номер телефона" />
+                <DataGridTextColumn Binding="{Binding Position.NameOfPosition}" Header="Должность" />
+                <DataGridTextColumn Binding="{Binding Position.LevelOfAccess}" Header="Уровень доступа" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Добавление" HorizontalAlignment="Left" VerticalAlignment="Top" Width="159" RenderTransformOrigin="0.501,-0.256" Margin="521,96,0,0" Click="Button_Click_1"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Информация о работнике" x:Name="Btn1" HorizontalAlignment="Left" Margin="521,29,0,0" VerticalAlignment="Top" Width="159" Click="Btn1_Click"/>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="Изменение данных" x:Name="Btn1_Copy" HorizontalAlignment="Left" Margin="521,121,0,0" VerticalAlignment="Top" Width="159" Click="Btn1_Copy_Click"/>
+        <GroupBox Header="Информация" HorizontalAlignment="Left" Height="50" Margin="521,14,0,0" VerticalAlignment="Top" Width="159"/>
+        <GroupBox Header="Команды" HorizontalAlignment="Left" Height="114" Margin="521,69,0,0" VerticalAlignment="Top" Width="159">
+            
+        </GroupBox>
+        <Button Style="{StaticResource RoundButtonTemplate}" Content="На главную" HorizontalAlignment="Left" Margin="521,146,0,0" VerticalAlignment="Top" Width="159" Click="Button_Click"/>
+    </Grid>
+</Window>
